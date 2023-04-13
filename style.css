@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: space-evenly;
     height: 150px;
-    width: 45%;
+    min-width: 45%;
     background-color: rgb(167, 113, 113);
 }
 
@@ -54,7 +54,7 @@
 
 #recorded-time {
     margin: 0 10px;
-    width: 30%;
+    min-width: 30%;
     height: 50px;
     text-align: center;
     font-size: 40px;

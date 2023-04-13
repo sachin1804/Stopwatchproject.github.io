@@ -14,7 +14,7 @@ start.addEventListener("click", () => {
         clearInterval(interval);
     }
 
-    interval = setInterval(displayTimmer, 1);
+    interval = setInterval(displayTimmer, 100);
     recorded.style.display = "none";
 })
 
@@ -29,18 +29,24 @@ var milicount = 0;
 
 reset.addEventListener("click", () => {
     clearInterval(interval);
+
+    if (recorded.style.display == "block") {
+        recorded.style.display = "none"
+        return;
+    }
     let h = hours.innerHTML;
     let m = minutes.innerHTML;
     let s = seconds.innerHTML;
     let mili = miliseconds.innerHTML;
     recorded.style.display = "block"
 
+
     recorded.innerHTML = ` ${h} : ${m} : ${s} : ${mili}`
 
     hours.innerHTML = "00"
     minutes.innerHTML = "00"
     seconds.innerHTML = "00"
-    miliseconds.innerHTML = "00"
+    miliseconds.innerHTML = "000"
     hcount = 0;
     mcount = 0;
     scount = 0;
@@ -48,8 +54,8 @@ reset.addEventListener("click", () => {
 });
 
 function displayTimmer() {
-    milicount += 1;
-    miliseconds.innerHTML = milicount < 10 ? "0" + milicount : milicount;
+    milicount += 10;
+    miliseconds.innerHTML = milicount < 10 ? "00" + milicount : milicount < 100 ? "0" + milicount : milicount;
     if (milicount >= 99) {
         milicount = 0;
         scount++;
